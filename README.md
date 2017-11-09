@@ -26,7 +26,7 @@ Cacheflow.silence do
 end
 ```
 
-To silence logging for only Sidekiq commands, use: [master]
+To silence logging for only [Sidekiq](https://github.com/mperham/sidekiq) commands, create an initializer with: [master]
 
 ```ruby
 Cacheflow.silence_sidekiq!
