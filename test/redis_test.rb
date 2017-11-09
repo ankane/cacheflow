@@ -10,5 +10,9 @@ class RedisTest < Minitest::Test
       client.set "foo", "bar"
       client.incr "baz"
     end
+
+    Cacheflow.silence do
+      client.get("silence")
+    end
   end
 end

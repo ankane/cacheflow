@@ -14,7 +14,7 @@ module Cacheflow
 
     class Instrumenter < ActiveSupport::LogSubscriber
       def query(event)
-        return unless logger.debug?
+        return if !logger.debug? || Cacheflow.silenced?
 
         name = "%s (%.2fms)" % ["Memcached", event.duration]
         debug "  #{color(name, BLUE, true)} #{event.payload[:op].to_s.upcase} #{event.payload[:args].join(" ")}"

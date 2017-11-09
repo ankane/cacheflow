@@ -16,6 +16,22 @@ gem 'cacheflow', group: :development
 
 When your log level is set to `DEBUG` (Rails default in development), all commands to Memcached and Redis are logged.
 
+## Features
+
+To silence logging, use: [master]
+
+```ruby
+Cacheflow.silence do
+  # code
+end
+```
+
+To silence logging for only Sidekiq commands, use: [master]
+
+```ruby
+Cacheflow.silence_sidekiq!
+```
+
 ## History
 
 View the [changelog](https://github.com/ankane/cacheflow/blob/master/CHANGELOG.md)

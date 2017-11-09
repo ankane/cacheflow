@@ -13,7 +13,7 @@ module Cacheflow
 
     class Instrumenter < ActiveSupport::LogSubscriber
       def query(event)
-        return unless logger.debug?
+        return if !logger.debug? || Cacheflow.silenced?
 
         name = "%s (%.2fms)" % ["Redis", event.duration]
 

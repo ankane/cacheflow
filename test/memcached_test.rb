@@ -5,5 +5,9 @@ class MemcachedTest < Minitest::Test
     client = Dalli::Client.new
     client.set("hello", "world")
     client.get("hello")
+
+    Cacheflow.silence do
+      client.get("silence")
+    end
   end
 end
