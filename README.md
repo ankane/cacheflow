@@ -32,6 +32,10 @@ To silence logging for [Sidekiq](https://github.com/mperham/sidekiq) commands, c
 Cacheflow.silence_sidekiq!
 ```
 
+## Privacy
+
+If you use Cacheflow in an environment with [personal data](https://en.wikipedia.org/wiki/Personally_identifiable_information) and store that data in Memcached or Redis, it can end up in your app logs. To avoid this, silence logging for those calls.
+
 ## History
 
 View the [changelog](https://github.com/ankane/cacheflow/blob/master/CHANGELOG.md)
