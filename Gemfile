@@ -1,4 +1,8 @@
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in cacheflow.gemspec
 gemspec
+
+gem "rake"
+gem "minitest"
+gem "dalli"
+gem "redis"
