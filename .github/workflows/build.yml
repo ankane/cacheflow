@@ -2,10 +2,15 @@ name: build
 on: [push, pull_request]
 jobs:
   build:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.1
         bundler-cache: true
+    - run: |
+        sudo apt-get install redis-server
+        sudo systemctl start redis
+        sudo systemctl start memcached
     - run: bundle exec rake test
