@@ -23,5 +23,9 @@ module Cacheflow
   end
 end
 
-Dalli::Server.prepend(Cacheflow::Memcached::Notifications)
+if defined?(Dalli::Protocol::Binary)
+  Dalli::Protocol::Binary.prepend(Cacheflow::Memcached::Notifications)
+else
+  Dalli::Server.prepend(Cacheflow::Memcached::Notifications)
+end
 Cacheflow::Memcached::Instrumenter.attach_to(:memcached)

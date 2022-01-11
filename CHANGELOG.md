@@ -1,3 +1,7 @@
+## 0.2.1 (unreleased)
+
+- Fixed warning with Dalli
+
 ## 0.2.0 (2022-01-10)
 
 - Dropped support for Ruby < 2.6 and Active Support < 5.2
