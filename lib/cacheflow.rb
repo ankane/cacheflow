@@ -1,4 +1,7 @@
+# dependencies
 require "active_support"
+
+# modules
 require "cacheflow/version"
 
 module Cacheflow

@@ -1,0 +1,11 @@
+name: build
+on: [push, pull_request]
+jobs:
+  build:
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1
+        bundler-cache: true
+    - run: bundle exec rake test
