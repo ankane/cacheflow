@@ -1,3 +1,7 @@
+## 0.2.0 (unreleased)
+
+- Dropped support for Ruby < 2.6 and Active Support < 5.2
+
 ## 0.1.1 (2017-11-13)
 
 - Added `silence` method
