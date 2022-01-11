@@ -13,7 +13,7 @@ Works with the Rails cache, as well as [Dalli](https://github.com/petergoldstein
 Add this line to your application’s Gemfile:
 
 ```ruby
-gem 'cacheflow', group: :development
+gem "cacheflow", group: :development
 ```
 
 When your log level is set to `DEBUG` (Rails default in development), all commands to Memcached and Redis are logged.
