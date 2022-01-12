@@ -1,6 +1,6 @@
-## 0.2.1 (unreleased)
+## 0.2.1 (2022-01-12)
 
-- Fixed warning with Dalli
+- Fixed deprecation warning with Dalli 3
 
 ## 0.2.0 (2022-01-10)
 
