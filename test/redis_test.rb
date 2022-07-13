@@ -10,9 +10,16 @@ class RedisTest < Minitest::Test
   end
 
   def test_multi
-    client.multi do
-      client.set "foo", "bar"
-      client.incr "baz"
+    if Redis::VERSION.to_f >= 4.6
+      client.multi do |pipeline|
+        pipeline.set "foo", "bar"
+        pipeline.incr "baz"
+      end
+    else
+      client.multi do
+        client.set "foo", "bar"
+        client.incr "baz"
+      end
     end
 
     expected = {"query.redis" => 1}
