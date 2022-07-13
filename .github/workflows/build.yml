@@ -10,6 +10,7 @@ jobs:
         ruby-version: 3.1
         bundler-cache: true
     - run: |
+        sudo apt-get update
         sudo apt-get install memcached redis-server
         sudo systemctl start memcached
         sudo systemctl start redis
