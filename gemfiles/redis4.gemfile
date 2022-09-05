@@ -1,0 +1,8 @@
+source "https://rubygems.org"
+
+gemspec path: ".."
+
+gem "rake"
+gem "minitest"
+gem "dalli", "~> 2"
+gem "redis", "~> 4"
