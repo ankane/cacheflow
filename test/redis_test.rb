@@ -26,6 +26,18 @@ class RedisTest < Minitest::Test
     assert_equal expected, $events
   end
 
+  def test_redis_client
+    skip unless defined?(RedisClient)
+
+    redis = RedisClient.new
+    redis.call("SET", "hello", "world")
+    redis.call("GET", "hello")
+
+    # HELLO call
+    expected = {"query.redis" => 3}
+    assert_equal expected, $events
+  end
+
   def test_silence
     assert_silent do
       Cacheflow.silence do

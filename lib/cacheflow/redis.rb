@@ -1,5 +1,27 @@
 module Cacheflow
   module Redis
+    # redis 5 / redis-client
+    module ClientNotifications
+      def call(command, redis_config)
+        payload = {
+          commands: [command]
+        }
+        ActiveSupport::Notifications.instrument("query.redis", payload) do
+          super
+        end
+      end
+
+      def call_pipelined(commands, redis_config)
+        payload = {
+          commands: commands
+        }
+        ActiveSupport::Notifications.instrument("query.redis", payload) do
+          super
+        end
+      end
+    end
+
+    # redis 4
     module Notifications
       def logging(commands)
         payload = {
@@ -28,5 +50,12 @@ module Cacheflow
   end
 end
 
-Redis::Client.prepend(Cacheflow::Redis::Notifications)
+if defined?(RedisClient)
+  RedisClient.register(Cacheflow::Redis::ClientNotifications)
+end
+
+if Redis::VERSION.to_i < 5
+  Redis::Client.prepend(Cacheflow::Redis::Notifications)
+end
+
 Cacheflow::Redis::Instrumenter.attach_to(:redis)

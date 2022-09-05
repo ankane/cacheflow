@@ -1,3 +1,7 @@
+## 0.3.0 (unreleased)
+
+- Added support for `redis` 5 and `redis-client` gems
+
 ## 0.2.1 (2022-01-12)
 
 - Fixed deprecation warning with Dalli 3

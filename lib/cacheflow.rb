@@ -7,7 +7,7 @@ require "cacheflow/version"
 module Cacheflow
   def self.activate
     require "cacheflow/memcached" if defined?(Dalli)
-    require "cacheflow/redis" if defined?(Redis)
+    require "cacheflow/redis" if defined?(Redis) || defined?(RedisClient)
   end
 
   def self.silenced?
