@@ -2,8 +2,6 @@
 
 Colorized logging for Memcached and Redis
 
-![Screenshot](https://gist.githubusercontent.com/ankane/64d630db934c5222587794232a690864/raw/880b70fdbd2d11ccc8475f4616397184918852e8/console.png)
-
 Works with the Rails cache, as well as [Dalli](https://github.com/petergoldstein/dalli) and [Redis](https://github.com/redis/redis-rb) clients directly
 
 [![Build Status](https://github.com/ankane/cacheflow/workflows/build/badge.svg?branch=master)](https://github.com/ankane/cacheflow/actions)
