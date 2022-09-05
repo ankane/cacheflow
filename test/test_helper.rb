@@ -26,6 +26,10 @@ class Minitest::Test
     end
   end
 
+  def assert_events(expected)
+    assert_equal expected, $events
+  end
+
   def assert_commands(commands)
     commands.each do |command|
       assert_match command, $io.string

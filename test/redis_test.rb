@@ -5,9 +5,7 @@ class RedisTest < Minitest::Test
     client.set("hello", "world")
     client.get("hello")
 
-    expected = {"query.redis" => 2}
-    assert_equal expected, $events
-
+    assert_events({"query.redis" => 2})
     assert_commands ["SET hello world", "GET hello"]
   end
 
@@ -24,9 +22,7 @@ class RedisTest < Minitest::Test
       end
     end
 
-    expected = {"query.redis" => 1}
-    assert_equal expected, $events
-
+    assert_events({"query.redis" => 1})
     assert_commands ["MULTI >> SET foo bar >> INCR baz >> EXEC"]
   end
 
@@ -37,10 +33,7 @@ class RedisTest < Minitest::Test
     redis.call("SET", "hello", "world")
     redis.call("GET", "hello")
 
-    # HELLO call
-    expected = {"query.redis" => 3}
-    assert_equal expected, $events
-
+    assert_events({"query.redis" => 3})
     assert_commands ["HELLO 3", "SET hello world", "GET hello"]
   end
 
