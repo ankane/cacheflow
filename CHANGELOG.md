@@ -1,4 +1,4 @@
-## 0.3.0 (unreleased)
+## 0.3.0 (2022-09-05)
 
 - Added support for `redis` 5 and `redis-client` gems
 - Dropped support for Ruby < 2.7 and Active Support < 6
