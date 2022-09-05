@@ -8,8 +8,7 @@ class MemcachedTest < Minitest::Test
     expected = {"query.memcached" => 2}
     assert_equal expected, $events
 
-    assert_match "SET hello world 0 0", $io.string
-    assert_match "GET hello", $io.string
+    assert_commands ["SET hello world 0 0", "GET hello"]
   end
 
   def test_silence
