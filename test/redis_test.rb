@@ -7,6 +7,9 @@ class RedisTest < Minitest::Test
 
     expected = {"query.redis" => 2}
     assert_equal expected, $events
+
+    assert_match "SET hello world", $io.string
+    assert_match "GET hello", $io.string
   end
 
   def test_multi
@@ -24,6 +27,8 @@ class RedisTest < Minitest::Test
 
     expected = {"query.redis" => 1}
     assert_equal expected, $events
+
+    assert_match "MULTI >> SET foo bar >> INCR baz >> EXEC", $io.string
   end
 
   def test_redis_client
@@ -36,10 +41,14 @@ class RedisTest < Minitest::Test
     # HELLO call
     expected = {"query.redis" => 3}
     assert_equal expected, $events
+
+    assert_match "HELLO 3", $io.string
+    assert_match "SET hello world", $io.string
+    assert_match "GET hello", $io.string
   end
 
   def test_silence
-    assert_silent do
+    assert_silence do
       Cacheflow.silence do
         client.get("silence")
       end
