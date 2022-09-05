@@ -25,16 +25,10 @@ jobs:
       run: |
         curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
         echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
-        sudo apt-get update
-        sudo apt-get install redis
 
-    - if: ${{ matrix.redis != 'latest' }}
       run: |
         sudo apt-get update
-        sudo apt-get install redis-server
-
-    - run: |
-        sudo systemctl start redis
-        sudo apt-get install memcached
+        sudo apt-get install memcached redis-server
         sudo systemctl start memcached
+        sudo systemctl start redis
     - run: bundle exec rake test
