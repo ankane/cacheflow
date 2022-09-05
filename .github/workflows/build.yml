@@ -2,13 +2,14 @@ name: build
 on: [push, pull_request]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
         include:
         - ruby: 3.1
           gemfile: Gemfile
+          redis: latest
         - ruby: 2.6
           gemfile: gemfiles/redis4.gemfile
     env:
@@ -19,9 +20,21 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
-    - run: |
+
+    - if: ${{ matrix.redis == 'latest' }}
+      run: |
+        curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+        echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
         sudo apt-get update
-        sudo apt-get install memcached redis-server
-        sudo systemctl start memcached
+        sudo apt-get install redis
+
+    - if: ${{ matrix.redis != 'latest' }}
+      run: |
+        sudo apt-get update
+        sudo apt-get install redis-server
+
+    - run: |
         sudo systemctl start redis
+        sudo apt-get install memcached
+        sudo systemctl start memcached
     - run: bundle exec rake test
