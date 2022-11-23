@@ -17,20 +17,20 @@ jobs:
     env:
       BUNDLE_GEMFILE: ${{ matrix.gemfile }}
     steps:
-    - uses: actions/checkout@v3
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
 
-    - if: ${{ matrix.redis == 'latest' }}
-      run: |
-        curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
-        echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+      - if: ${{ matrix.redis == 'latest' }}
+        run: |
+          curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+          echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
 
-    - run: |
-        sudo apt-get update
-        sudo apt-get install memcached redis-server
-        sudo systemctl start memcached
-        sudo systemctl start redis-server
-    - run: bundle exec rake test
+      - run: |
+          sudo apt-get update
+          sudo apt-get install memcached redis-server
+          sudo systemctl start memcached
+          sudo systemctl start redis-server
+      - run: bundle exec rake test
