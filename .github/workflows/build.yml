@@ -7,13 +7,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - ruby: 3.1
-          gemfile: Gemfile
-          redis: latest
-        - ruby: "3.0"
-          gemfile: gemfiles/redis4.gemfile
-        - ruby: 2.7
-          gemfile: gemfiles/redis45.gemfile
+          - ruby: 3.1
+            gemfile: Gemfile
+            redis: latest
+          - ruby: "3.0"
+            gemfile: gemfiles/redis4.gemfile
+          - ruby: 2.7
+            gemfile: gemfiles/redis45.gemfile
     env:
       BUNDLE_GEMFILE: ${{ matrix.gemfile }}
     steps:
