@@ -25,28 +25,7 @@ module Cacheflow
   end
 
   def self.silence_sidekiq!
-    ::Sidekiq.singleton_class.prepend(Cacheflow::Sidekiq::ClassMethods)
-    ::Sidekiq::Client.prepend(Cacheflow::Sidekiq::Client::InstanceMethods)
-  end
-
-  module Sidekiq
-    module ClassMethods
-      def redis(*_)
-        Cacheflow.silence do
-          super
-        end
-      end
-    end
-
-    module Client
-      module InstanceMethods
-        def push(*_)
-          Cacheflow.silence do
-            super
-          end
-        end
-      end
-    end
+    require_relative "cacheflow/sidekiq"
   end
 end
 
