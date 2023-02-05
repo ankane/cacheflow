@@ -2,12 +2,12 @@
 require "active_support"
 
 # modules
-require "cacheflow/version"
+require_relative "cacheflow/version"
 
 module Cacheflow
   def self.activate
-    require "cacheflow/memcached" if defined?(Dalli)
-    require "cacheflow/redis" if defined?(Redis) || defined?(RedisClient)
+    require_relative "cacheflow/memcached" if defined?(Dalli)
+    require_relative "cacheflow/redis" if defined?(Redis) || defined?(RedisClient)
   end
 
   def self.silenced?
@@ -51,7 +51,7 @@ module Cacheflow
 end
 
 if defined?(Rails)
-  require "cacheflow/railtie"
+  require_relative "cacheflow/railtie"
 else
   Cacheflow.activate
 end
