@@ -52,9 +52,8 @@ end
 
 if defined?(RedisClient)
   RedisClient.register(Cacheflow::Redis::ClientNotifications)
-end
-
-if Redis::VERSION.to_i < 5
+elsif defined?(Redis)
+  # redis < 5
   Redis::Client.prepend(Cacheflow::Redis::Notifications)
 end
 

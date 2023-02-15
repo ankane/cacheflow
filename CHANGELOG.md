@@ -1,3 +1,7 @@
+## 0.3.1 (unreleased)
+
+- Fixed error with `redis-client`
+
 ## 0.3.0 (2022-09-05)
 
 - Added support for `redis` 5 and `redis-client` gems
