@@ -1,4 +1,4 @@
-## 0.3.1 (unreleased)
+## 0.3.1 (2023-02-15)
 
 - Fixed error with `redis-client`
 
