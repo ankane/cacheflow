@@ -44,7 +44,7 @@ module Cacheflow
           commands << "#{op.to_s.upcase} #{args.join(" ")}".strip
         end
 
-        debug "  #{color(name, RED, true)} #{commands.join(" >> ")}"
+        debug "  #{color(name, RED, bold: true)} #{commands.join(" >> ")}"
       end
     end
   end

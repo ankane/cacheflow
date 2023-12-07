@@ -1,3 +1,7 @@
+## 0.3.2 (unreleased)
+
+- Fixed deprecation warning with Active Support 7.1
+
 ## 0.3.1 (2023-02-15)
 
 - Fixed error with `redis-client`

@@ -17,7 +17,7 @@ module Cacheflow
         return if !logger.debug? || Cacheflow.silenced?
 
         name = "%s (%.2fms)" % ["Memcached", event.duration]
-        debug "  #{color(name, BLUE, true)} #{event.payload[:op].to_s.upcase} #{event.payload[:args].join(" ")}"
+        debug "  #{color(name, BLUE, bold: true)} #{event.payload[:op].to_s.upcase} #{event.payload[:args].join(" ")}"
       end
     end
   end
