@@ -4,5 +4,6 @@ gemspec path: ".."
 
 gem "rake"
 gem "minitest"
+gem "activesupport", "~> 6.0.0"
 gem "dalli", "~> 2"
 gem "redis", "~> 4"
