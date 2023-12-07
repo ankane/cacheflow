@@ -1,4 +1,4 @@
-## 0.3.2 (unreleased)
+## 0.3.2 (2023-12-07)
 
 - Fixed deprecation warning with Active Support 7.1
 
