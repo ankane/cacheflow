@@ -1,6 +1,7 @@
 require "bundler/setup"
 require "dalli"
 require "redis"
+require "active_support/all"
 Bundler.require(:default)
 require "minitest/autorun"
 require "minitest/pride"
