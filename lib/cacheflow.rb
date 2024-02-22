@@ -30,7 +30,7 @@ module Cacheflow
 
   # private
   def self.args(args)
-    args.map { |v| v.to_s.dup.force_encoding("UTF-8").valid_encoding? ? v : "<binary-data>" }.join(" ")
+    args.map { |v| v.to_s.dup.force_encoding(Encoding::UTF_8).valid_encoding? ? v : "<binary-data>" }.join(" ")
   end
 end
 
