@@ -17,6 +17,13 @@ class MemcachedTest < Minitest::Test
     end
   end
 
+  def test_active_support
+    cache = ActiveSupport::Cache::MemCacheStore.new
+    cache.write("hello", "world")
+    cache.read("hello")
+    assert_commands ["SET hello <binary-data>", "GET hello"]
+  end
+
   def client
     @client ||= Dalli::Client.new
   end

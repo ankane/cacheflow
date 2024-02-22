@@ -45,6 +45,13 @@ class RedisTest < Minitest::Test
     end
   end
 
+  def test_active_support
+    cache = ActiveSupport::Cache::RedisCacheStore.new
+    cache.write("hello", "world")
+    cache.read("hello")
+    assert_commands ["SET hello <binary-data>", "GET hello"]
+  end
+
   def client
     @client ||= Redis.new
   end

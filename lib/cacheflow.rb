@@ -27,6 +27,11 @@ module Cacheflow
   def self.silence_sidekiq!
     require_relative "cacheflow/sidekiq"
   end
+
+  # private
+  def self.args(args)
+    args.map { |v| v.to_s.dup.force_encoding("UTF-8").valid_encoding? ? v : "<binary-data>" }.join(" ")
+  end
 end
 
 if defined?(Rails)

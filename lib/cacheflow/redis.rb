@@ -41,7 +41,7 @@ module Cacheflow
 
         commands = []
         event.payload[:commands].map do |op, *args|
-          commands << "#{op.to_s.upcase} #{args.join(" ")}".strip
+          commands << "#{op.to_s.upcase} #{Cacheflow.args(args)}".strip
         end
 
         debug "  #{color(name, RED, bold: true)} #{commands.join(" >> ")}"
