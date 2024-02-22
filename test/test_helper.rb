@@ -14,7 +14,9 @@ ActiveSupport::Notifications.subscribe(/memcached|redis/) do |name, _start, _fin
   $events[name] += 1
 end
 
-ActiveSupport.cache_format_version = ActiveSupport::VERSION::STRING.to_f
+if ActiveSupport::VERSION::MAJOR >= 7
+  ActiveSupport.cache_format_version = ActiveSupport::VERSION::STRING.to_f
+end
 
 class Minitest::Test
   def setup
