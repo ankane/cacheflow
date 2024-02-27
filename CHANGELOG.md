@@ -1,4 +1,4 @@
-## 0.3.3 (unreleased)
+## 0.3.3 (2024-02-27)
 
 - Fixed error with binary data
 
