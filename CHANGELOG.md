@@ -1,5 +1,6 @@
 ## 0.4.0 (unreleased)
 
+- Improved binary data detection
 - Dropped support for Ruby < 3.1 and Active Support < 7
 
 ## 0.3.3 (2024-02-27)

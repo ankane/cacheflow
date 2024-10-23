@@ -30,7 +30,14 @@ module Cacheflow
 
   # private
   def self.args(args)
-    args.map { |v| v.to_s.dup.force_encoding(Encoding::UTF_8).valid_encoding? ? v : "<binary-data>" }.join(" ")
+    args.map { |v| binary?(v) ? "<binary-data>" : v }.join(" ")
+  end
+
+  # private
+  def self.binary?(v)
+    v = v.to_s
+    # string encoding creates false positives, so try to determine based on value
+    v.include?("\x00") || !v.dup.force_encoding(Encoding::UTF_8).valid_encoding?
   end
 end
 
