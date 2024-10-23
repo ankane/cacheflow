@@ -20,7 +20,7 @@ ActiveSupport::Notifications.subscribe(/memcached|redis/) do |name, _start, _fin
   $events[name] += 1
 end
 
-if ActiveSupport::VERSION::MAJOR >= 7 && ActiveSupport::VERSION::STRING.to_f != 7.2
+if ![7.2, 8.0].include?(ActiveSupport::VERSION::STRING.to_f)
   ActiveSupport.cache_format_version = ActiveSupport::VERSION::STRING.to_f
 end
 
