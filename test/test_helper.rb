@@ -2,6 +2,12 @@ require "bundler/setup"
 require "dalli"
 require "redis"
 require "active_support/all"
+
+if ActiveSupport::VERSION::STRING.to_f >= 7.2
+  # fix circular require warning
+  ActiveSupport.deprecator.behavior = :raise
+end
+
 Bundler.require(:default)
 require "minitest/autorun"
 require "minitest/pride"
