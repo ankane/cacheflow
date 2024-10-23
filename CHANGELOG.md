@@ -1,3 +1,7 @@
+## 0.4.0 (unreleased)
+
+- Dropped support for Ruby < 3.1 and Active Support < 7
+
 ## 0.3.3 (2024-02-27)
 
 - Fixed error with binary data
