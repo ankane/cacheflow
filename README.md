@@ -1,6 +1,6 @@
 # Cacheflow
 
-Colorized logging for Memcached and Redis
+Colorized logging for Memcached, Redis, and Valkey
 
 Works with the Rails cache, as well as [Dalli](https://github.com/petergoldstein/dalli) and [Redis](https://github.com/redis/redis-rb) clients directly
 
@@ -14,7 +14,7 @@ Add this line to your application’s Gemfile:
 gem "cacheflow", group: :development
 ```
 
-When your log level is set to `DEBUG` (Rails default in development), all commands to Memcached and Redis are logged.
+When your log level is set to `DEBUG` (Rails default in development), all commands to Memcached, Redis, and Valkey are logged.
 
 ## Features
 
@@ -34,7 +34,7 @@ Cacheflow.silence_sidekiq!
 
 ## Data Protection
 
-If you use Cacheflow in an environment with [personal data](https://en.wikipedia.org/wiki/Personally_identifiable_information) and store that data in Memcached or Redis, it can end up in your app logs. To avoid this, silence logging for those calls.
+If you use Cacheflow in an environment with [personal data](https://en.wikipedia.org/wiki/Personally_identifiable_information) and store that data in Memcached, Redis, or Valkey, it can end up in your app logs. To avoid this, silence logging for those calls.
 
 ## History
 

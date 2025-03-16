@@ -32,7 +32,15 @@ jobs:
 
       - run: |
           sudo apt-get update
-          sudo apt-get install memcached redis-server
+          sudo apt-get install memcached redis-server valkey-server
           sudo systemctl start memcached
           sudo systemctl start redis-server
+          redis-cli info | grep version
+      - run: bundle exec rake test
+
+      - run: |
+          sudo systemctl stop redis-server
+          sleep 3
+          sudo systemctl start valkey-server
+          valkey-cli info | grep version
       - run: bundle exec rake test

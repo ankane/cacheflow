@@ -3,7 +3,7 @@ require_relative "lib/cacheflow/version"
 Gem::Specification.new do |spec|
   spec.name          = "cacheflow"
   spec.version       = Cacheflow::VERSION
-  spec.summary       = "Colorized logging for Memcached and Redis"
+  spec.summary       = "Colorized logging for Memcached, Redis, and Valkey"
   spec.homepage      = "https://github.com/ankane/cacheflow"
   spec.license       = "MIT"
 
