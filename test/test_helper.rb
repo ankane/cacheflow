@@ -1,7 +1,6 @@
 require "bundler/setup"
 require "dalli"
 require "redis"
-require "logger" # for Active Support < 7.1
 require "active_support/all"
 
 if ActiveSupport::VERSION::STRING.to_f >= 7.2
