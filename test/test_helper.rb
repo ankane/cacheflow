@@ -21,7 +21,7 @@ ActiveSupport::Notifications.subscribe(/memcached|redis/) do |name, _start, _fin
 end
 
 ActiveSupport.cache_format_version =
-  if [7.2, 8.0].include?(ActiveSupport::VERSION::STRING.to_f)
+  if [7.2, 8.0, 8.1].include?(ActiveSupport::VERSION::STRING.to_f)
     7.1
   else
     ActiveSupport::VERSION::STRING.to_f
