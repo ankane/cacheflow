@@ -4,6 +4,6 @@ gemspec
 
 gem "rake"
 gem "minitest"
-gem "activesupport", "~> 8.0.0"
+gem "activesupport", "~> 8.1.0"
 gem "dalli"
 gem "redis"
