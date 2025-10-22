@@ -10,7 +10,6 @@ end
 
 Bundler.require(:default)
 require "minitest/autorun"
-require "minitest/pride"
 
 $io = StringIO.new(+"")
 ActiveSupport::LogSubscriber.logger = ActiveSupport::Logger.new($io)
