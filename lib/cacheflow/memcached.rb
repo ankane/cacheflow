@@ -23,7 +23,9 @@ module Cacheflow
   end
 end
 
-if defined?(Dalli::Protocol::Binary)
+if defined?(Dalli::Protocol::Meta)
+  Dalli::Protocol::Meta.prepend(Cacheflow::Memcached::Notifications)
+elsif defined?(Dalli::Protocol::Binary)
   Dalli::Protocol::Binary.prepend(Cacheflow::Memcached::Notifications)
 else
   Dalli::Server.prepend(Cacheflow::Memcached::Notifications)
