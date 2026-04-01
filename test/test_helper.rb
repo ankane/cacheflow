@@ -3,10 +3,8 @@ require "dalli"
 require "redis"
 require "active_support/all"
 
-if ActiveSupport::VERSION::STRING.to_f >= 7.2
-  # fix circular require warning
-  ActiveSupport.deprecator.behavior = :raise
-end
+# fix circular require warning
+ActiveSupport.deprecator.behavior = :raise
 
 Bundler.require(:default)
 require "minitest/autorun"
