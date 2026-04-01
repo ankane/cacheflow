@@ -25,9 +25,10 @@ end
 
 if defined?(Dalli::Protocol::Meta)
   Dalli::Protocol::Meta.prepend(Cacheflow::Memcached::Notifications)
-elsif defined?(Dalli::Protocol::Binary)
-  Dalli::Protocol::Binary.prepend(Cacheflow::Memcached::Notifications)
-else
-  Dalli::Server.prepend(Cacheflow::Memcached::Notifications)
 end
+
+if defined?(Dalli::Protocol::Binary)
+  Dalli::Protocol::Binary.prepend(Cacheflow::Memcached::Notifications)
+end
+
 Cacheflow::Memcached::Instrumenter.attach_to(:memcached)
