@@ -1,7 +1,7 @@
 module Cacheflow
   module Sidekiq
     module ClassMethods
-      def redis(*_)
+      def redis(...)
         Cacheflow.silence do
           super
         end
@@ -10,7 +10,7 @@ module Cacheflow
 
     module Client
       module InstanceMethods
-        def push(*_)
+        def push(...)
           Cacheflow.silence do
             super
           end
