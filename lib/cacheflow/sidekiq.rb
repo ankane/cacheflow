@@ -1,6 +1,6 @@
 module Cacheflow
   module Sidekiq
-    module ClassMethods
+    module InstanceMethods
       def redis(...)
         Cacheflow.silence do
           super
@@ -20,5 +20,9 @@ module Cacheflow
   end
 end
 
-::Sidekiq.singleton_class.prepend(Cacheflow::Sidekiq::ClassMethods)
+if defined?(::Sidekiq::Capsule)
+  ::Sidekiq::Capsule.prepend(Cacheflow::Sidekiq::InstanceMethods)
+end
+
+::Sidekiq::Config.prepend(Cacheflow::Sidekiq::InstanceMethods)
 ::Sidekiq::Client.prepend(Cacheflow::Sidekiq::Client::InstanceMethods)
