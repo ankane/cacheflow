@@ -27,8 +27,6 @@ class RedisTest < Minitest::Test
   end
 
   def test_redis_client
-    skip unless defined?(RedisClient)
-
     redis = RedisClient.new
     redis.call("SET", "hello", "world")
     redis.call("GET", "hello")
