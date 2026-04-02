@@ -34,7 +34,7 @@ Cacheflow.silence_sidekiq!
 
 ## Data Protection
 
-If you use Cacheflow in an environment with [personal data](https://en.wikipedia.org/wiki/Personally_identifiable_information) and store that data in Memcached, Redis, or Valkey, it can end up in your app logs. To avoid this, silence logging for those calls.
+If you use Cacheflow in an environment with [personal data](https://en.wikipedia.org/wiki/Personal_data) and store that data in Memcached, Redis, or Valkey, it can end up in your app logs. To avoid this, silence logging for those calls.
 
 ## History
 
