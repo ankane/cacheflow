@@ -1,6 +1,7 @@
 ## 0.6.0 (unreleased)
 
 - Added support for Dalli 5
+- Dropped support for `redis` < 5
 - Dropped support for Ruby < 3.3 and Active Support < 7.2
 
 ## 0.5.0 (2025-05-05)
