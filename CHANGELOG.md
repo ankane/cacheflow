@@ -1,4 +1,4 @@
-## 0.6.0 (unreleased)
+## 0.6.0 (2026-04-01)
 
 - Added support for Dalli 5
 - Fixed `silence_sidekiq!` method for Sidekiq 7+
