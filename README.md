@@ -2,7 +2,7 @@
 
 Colorized logging for Memcached, Redis, and Valkey
 
-Works with the Rails cache, as well as [Dalli](https://github.com/petergoldstein/dalli) and [Redis](https://github.com/redis/redis-rb) clients directly
+Works with the Rails cache, as well as [Dalli](https://github.com/petergoldstein/dalli), [Redis](https://github.com/redis/redis-rb), and [RedisClient](https://github.com/redis-rb/redis-client) clients directly
 
 [![Build Status](https://github.com/ankane/cacheflow/actions/workflows/build.yml/badge.svg)](https://github.com/ankane/cacheflow/actions)
 
